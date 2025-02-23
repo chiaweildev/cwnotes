@@ -1,0 +1,20 @@
+---
+import '../styles/global.css';
+import Head from '../components/Head.astro';
+
+interface Props {
+    title:string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-Hant-TW">
+	<head>
+		<Head title={title}/>
+	</head>
+    <body class="w-full p-6 sm:p-10 md:p-14 text-sm leading-6 sm:text-[15px] sm:leading-7 md:text-base md:leading-7">
+        <slot/>
+	</body>
+</html>
