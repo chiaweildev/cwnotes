@@ -1,0 +1,40 @@
+---
+import '../../styles/global.css';
+import { SITE_TITLE } from '../../consts';
+import MainLayout from '../../layouts/MainLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Main from '../../components/Main.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('writing')).sort((a, b) => {
+	const dateA = a.data.updatedDate?.valueOf() || a.data.publishDate.valueOf();
+	const dateB = b.data.updatedDate?.valueOf() || b.data.publishDate.valueOf();
+	return dateB - dateA;
+});
+console.log(posts)
+---
+<MainLayout title={SITE_TITLE}>
+	<div class="flex flex-col mobile:flex-row">
+    	<Nav/>
+        <Main>
+            <ul>
+                {
+                    posts.map((post) => (
+                        <li class="font-medium">
+                            <a class="group flex gap-1 justify-between items-center" draggable="false" href={`/writing/${post.slug}/`}>
+                            <span class="block text-rurikon-500 group-hover:text-rurikon-700">{post.data.title}</span>
+                            <span class="text-sm dot-leaders flex-1 text-rurikon-100 font-normal group-hover:text-rurikon-500 transition-colors group-hover:transition-none leading-none"></span>
+                            <time class="block text-rurikon-200 tabular-nums font-normal tracking-tighter group-hover:text-rurikon-500 transition-colors group-hover:transition-none self-start">{post.data.publishDate.toLocaleDateString('zh-TW', {
+                                year: 'numeric',
+                                month: '2-digit',
+                                day: '2-digit',
+                                calendar: 'gregory',
+                            })}</time>
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </Main>
+  	</div>
+</MainLayout>
