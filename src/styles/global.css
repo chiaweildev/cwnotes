@@ -122,3 +122,16 @@ article details {
     margin-top: 1.75rem;
     padding: .5rem 0
 }
+
+.dot-leaders {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.dot-leaders::before {
+    content: "";
+    flex-grow: 1;
+    margin: 0 0.25em;
+    border-bottom: 2px dotted currentColor;
+}
