@@ -3,7 +3,122 @@
 @tailwind utilities;
 
 @layer base {
+    :root {
+        --color-rurikon-50: #ebedef;
+        --color-rurikon-100: #d8dbdf;
+        --color-rurikon-200: #b3b9c1;
+        --color-rurikon-300: #8c95a1;
+        --color-rurikon-400: #697381;
+        --color-rurikon-500: #4a515b;
+        --color-rurikon-600: #3b4149;
+        --color-rurikon-700: #2b3035;
+        --color-rurikon-800: #1e2125;
+        --color-rurikon-900: #0e0f11;
+        --color-rurikon-950: #07080a;
+        --color-rurikon-border: #d8dbdfb3;
+    }
     body {
         font-family: 'Libre Baskerville', 'Noto Sans TC', serif, sans-serif;
     }
+}
+
+@layer utilities {
+    .border-rurikon-border {
+        border-color: var(--color-rurikon-border)
+    }
+
+    .bg-rurikon-border {
+        background-color: var(--color-rurikon-border)
+    }
+    .text-rurikon-100 {
+        color: var(--color-rurikon-100)
+    }
+
+    .text-rurikon-200 {
+        color: var(--color-rurikon-200)
+    }
+
+    .text-rurikon-300 {
+        color: var(--color-rurikon-300)
+    }
+
+    .text-rurikon-400 {
+        color: var(--color-rurikon-400)
+    }
+
+    .text-rurikon-500 {
+        color: var(--color-rurikon-500)
+    }
+
+    .text-rurikon-600 {
+        color: var(--color-rurikon-600)
+    }
+
+    .text-rurikon-800 {
+        color: var(--color-rurikon-800)
+    }
+    .decoration-rurikon-300 {
+        -webkit-text-decoration-color: var(--color-rurikon-300);
+        text-decoration-color: var(--color-rurikon-300)
+    }
+
+    .decoration-from-font {
+        text-decoration-thickness: from-font
+    }
+
+    @media (hover: hover) {
+        .group-hover\:text-rurikon-300:is(:where(.group):hover *) {
+            color:var(--color-rurikon-300)
+        }
+    }
+
+    @media (hover: hover) {
+        .group-hover\:text-rurikon-500:is(:where(.group):hover *) {
+            color:var(--color-rurikon-500)
+        }
+    }
+
+    @media (hover: hover) {
+        .group-hover\:text-rurikon-700:is(:where(.group):hover *) {
+            color:var(--color-rurikon-700)
+        }
+    }
+
+    .marker\: text-rurikon-200 ::marker,.marker\:text-rurikon-200::marker {
+        color:var(--color-rurikon-200)
+    }
+
+    @media (hover: hover) {
+        .hover\:text-rurikon-600:hover {
+            color: var(--color-rurikon-600)
+        }
+
+        .hover\:decoration-rurikon-600:hover {
+            -webkit-text-decoration-color: var(--color-rurikon-600);
+            text-decoration-color: var(--color-rurikon-600)
+        }
+    }
+}
+
+blockquote {
+    border-left: 1px solid var(--color-rurikon-500)
+}
+
+article .framed>figure>span:first-child,article .framed>img {
+    padding: var(--frame-padding,.875rem);
+    background: var(--frame-background,#fff);
+    border: 1px solid var(--color-rurikon-border)
+}
+
+article iframe {
+    border: 1px solid var(--color-rurikon-border);
+    background-color: #fff;
+    width: 100%
+}
+
+article details {
+    border-top: 1px solid var(--color-rurikon-border);
+    border-bottom: 1px solid var(--color-rurikon-border);
+    margin-top: 1.75rem;
+    padding: .5rem 0
 }
